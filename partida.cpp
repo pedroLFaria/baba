@@ -34,24 +34,49 @@ public:
         case 0:
             break;
         case 1:
+        		int n_cores = 4, tam_codigo = 4, n_palpites = 10 ;
+        		bool cores_r = false;
+
             break;
         case 2:
+        		int n_cores = 6, tam_codigo = 4, n_palpites = 10;
+        		bool cores_r = false;
             break;
         case 3:
+        		int n_cores = 6, tam_codigo = 4, n_palpites = 10;
+        		bool cores_r = true;
             break;
         case 4:
+        		int n_cores = 7, tam_codigo = 5, n_palpites = 10;
+        		bool cores_r = false;
             break;
         case 5:
+        		int n_cores = 8, tam_codigo = 5, n_palpites = 9;
+        		bool cores_r = false;
             break;
         case 6:
+        		int n_cores = 8, tam_codigo = 5, n_palpites = 9;
+        		bool cores_r = true;
+
             break;
         case 7:
+        		int n_cores = 8, tam_codigo = 6, n_palpites = 8;
+        		bool cores_r = false;
+
             break;
         case 8:
+        		int n_cores = 9, tam_codigo = 6, n_palpites = 7;
+        		bool cores_r = false;
+
             break;
         case 9:
+        		int n_cores = 9, tam_codigo = 6, n_palpites = 7;
+        		bool cores_r = true;
+
             break;
         case 10:
+        		int n_cores = 10, tam_codigo = 6, n_palpites = 6;
+        		bool cores_r = true;
             break;
         }
     }
