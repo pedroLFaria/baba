@@ -15,6 +15,18 @@ private:
     int num_palpites;
     bool cores_repetidas;
 public:
+    void setNum_cores(int n_cores){
+        num_cores = n_cores;
+    }
+    void setTamanho_codigo(int t_codigo){
+        tamanho_codigo = t_codigo;
+    }
+    void setNum_palpites(int n_palpites){
+        num_palpites=n_palpites;
+    }
+    void setCores_repetidas(bool cores_r){
+        cores_repetidas = cores_r;
+    }
     void setSenhaAleatoria(){
         srand(time(NULL));
         string codigo[tamanho_codigo];
@@ -23,6 +35,7 @@ public:
         }
         setSenha(codigo);
     }
+
     static Tabuleiro*escolheDificuldade(){
         int dificuldade = -1;
         while(dificuldade < 0 || dificuldade > 10){
@@ -32,6 +45,22 @@ public:
         }
         switch(dificuldade){
         case 0:
+            int n_cores=-1, tam_codigo=-1, n_palpites=-1;
+            bool cores_r;
+            while(n_cores<4||n_cores>10){
+                cout<<"Escolha o números de cores(4-10):"
+                cin>>n_cores;
+            }
+            while(tam_codigo<4||tam_codigo>6){
+                cout<<"Escolha o tamanho do código(4-6)"
+                cin>>tam_codigo;
+            }
+            while(n_palpites<4||n_palpites>10){
+                cout<<"Escolha o número máximo de palpites(4-10):"
+                cin>>n_palpites;
+            }
+            cout<<"Escolha se deverá ter cores repetidas(true-false||0-1):"
+            cin>>cores_r;
             break;
         case 1:
         		int n_cores = 4, tam_codigo = 4, n_palpites = 10 ;
@@ -79,5 +108,9 @@ public:
         		bool cores_r = true;
             break;
         }
+        setcores_repetidas(cores_r);
+        setNum_cores(n_cores);
+        setNum_palpites(n_palpites);
+        setTamanho_codigo(tam_codigo);
     }
 };
