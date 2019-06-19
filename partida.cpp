@@ -48,18 +48,18 @@ public:
             int n_cores=-1, tam_codigo=-1, n_palpites=-1;
             bool cores_r;
             while(n_cores<4||n_cores>10){
-                cout<<"Escolha o números de cores(4-10):"
+                cout<<"Escolha o números de cores(4-10):";
                 cin>>n_cores;
             }
             while(tam_codigo<4||tam_codigo>6){
-                cout<<"Escolha o tamanho do código(4-6)"
+                cout<<"Escolha o tamanho do código(4-6)";
                 cin>>tam_codigo;
             }
             while(n_palpites<4||n_palpites>10){
-                cout<<"Escolha o número máximo de palpites(4-10):"
+                cout<<"Escolha o número máximo de palpites(4-10):";
                 cin>>n_palpites;
             }
-            cout<<"Escolha se deverá ter cores repetidas(true-false||0-1):"
+            cout<<"Escolha se deverá ter cores repetidas(true-false||0-1):";
             cin>>cores_r;
             break;
         case 1:
