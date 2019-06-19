@@ -1,13 +1,16 @@
 #include <iostream>
+using namespace std;
 enum Cores {
     amarelo,
     vermelho,
     verde
 };
 int main(){
-    Cores c[4] = {amarelo,amarelo,vermelho,verde};
-    bool k = (c[3]==1);
-    std::cout<<k;
+        int dificuldade = -1;
+        while(dificuldade < 0 || dificuldade > 10){
+            cout<<"Escolha uma dificuldade entre 1 e 10 ou 0 para montar o seu tabuleiro:\n";
+            cin>>dificuldade;
+        }
     return 0;
 }
 

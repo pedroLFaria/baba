@@ -23,12 +23,36 @@ public:
         }
         setSenha(codigo);
     }
-    static *escolheDificuldade(){
+    static Tabuleiro*escolheDificuldade(){
         int dificuldade = -1;
-        cout<<"Escolha a dificuldade:";
-        while([0,1,2,3,4,5,6,7,8,9,10].contains)
-        cin>>dificuldade;
-
-        switch(dificuldade)
+        while(dificuldade < 0 || dificuldade > 10){
+            cout<<"Escolha uma dificuldade entre 1 e 10 ou 0 para montar o seu tabuleiro:\n";
+            cin>>dificuldade;
+            cout<<"\n";
+        }
+        switch(dificuldade){
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
+        case 8:
+            break;
+        case 9:
+            break;
+        case 10:
+            break;
+        }
     }
 };
