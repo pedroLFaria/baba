@@ -102,18 +102,18 @@ private:
     }
 	static void escolheAtributosManualmente(int *n_cores, int *tam_codigo, int *n_palpites, bool *cores_r) {
 		while (*n_cores < 4 || *n_cores>10) {
-			cout << "Escolha o números de cores(4-10):";
+			cout << "Escolha o nÃºmeros de cores(4-10):";
 			cin >> *n_cores;
 		}
 		while (*tam_codigo < 4 || *tam_codigo>6) {
-			cout << "Escolha o tamanho do código(4-6)";
+			cout << "Escolha o tamanho do cÃ³digo(4-6)";
 			cin >> *tam_codigo;
 		}
 		while (*n_palpites < 4 || *n_palpites>10) {
-			cout << "Escolha o número máximo de palpites(4-10):";
+			cout << "Escolha o nÃºmero mÃ¡ximo de palpites(4-10):";
 			cin >> *n_palpites;
 		}
-		cout << "Escolha se deverá ter cores repetidas(true-false||0-1):";
+		cout << "Escolha se deverÃ¡ ter cores repetidas(true-false||0-1):";
 		cin >> *cores_r;
 	}
 	static bool escolheAdversario() {
@@ -159,6 +159,28 @@ public:
     	setaAtributosPelaDificuldade(dificuldade);
 		setAdversario(escolheAdversario());
 		getAdversario() ? setSenhaManual() : setSenhaAleatoria();
+    }
+
+    virtual void imprime_Tabuleiro() override
+   { 
+
+   		string **matriz = getMatriz();
+        for (int i = 0; i < num_palpites; ++i)
+        {
+           for (int j = 0; j < tamanho_codigo; ++j)
+           {    
+                cout<< "| "<< matriz[i][j] << endl;
+           }
+
+            cout << "| \n"<endl;
+            for (int k = 0; k < tamanho_codigo; ++k)
+            {
+                cout<< "--"<<endl;
+            }
+
+            cout<< "\n"<<endl;
+        }
+
     }
 
 };

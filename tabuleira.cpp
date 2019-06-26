@@ -10,12 +10,14 @@ private:
     string **matriz;
     string *senha;
 public:
-    Tabuleiro(int num_palpites = 4, int tamanho_codigo = 1): matriz(new string*[num_palpites]),senha(new string[tamanho_codigo]){
+    Tabuleiro(int num_palpites = 4, int tamanho_codigo = 1):matriz(new string*[num_palpites]),senha(new string[tamanho_codigo]){
         for (int i = 0; i < num_palpites; ++i){
             matriz[i] = new string[2*tamanho_codigo];
         }
     }
-    ~Tabuleiro(){}
+    ~Tabuleiro(){
+        
+    }
     void setSenha(string *inSenha){
         senha = inSenha;
     }
@@ -25,6 +27,16 @@ public:
     string *getSenha(){
         return senha;
     }
-    void setMatriz(){}
-    string **getMatriz(){}
+    void setMatriz(){
+
+    }
+    string **getMatriz(){
+        return *matriz;
+
+    }
+
+    virtual void imprime_Tabuleiro()
+    {
+        cout<< " "<<endl;
+    }
 };
