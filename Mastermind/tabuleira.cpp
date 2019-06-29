@@ -1,3 +1,6 @@
+#ifndef TABULEIRO_H
+#define TABULEIRO_H
+
 #include <iostream>
 #include <cstdlib>
 #include<ctime>
@@ -16,7 +19,12 @@ public:
             matriz[i] = new string[2*tamanho_codigo];
         }
     }
-    ~Tabuleiro(){}
+    ~Tabuleiro(){
+    	for (int i = 0; i < num_palpites; ++i)
+    	{
+    		/* code */
+    	}
+    }
     void setSenha(vector<string> inSenha){
         senha = inSenha;
     }
@@ -27,5 +35,12 @@ public:
         return senha;
     }
     void setMatriz(){}
-    string **getMatriz(){}
+    string **getMatriz(){
+    	return **matriz
+    }
+
+    virtual void imprime_tabuleiro()
+    {
+    	cout<<" ";
+    }
 };

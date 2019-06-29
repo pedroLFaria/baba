@@ -1,32 +1,98 @@
-#ifndef PARTIDA_H
-#define PARTIDA_H
 
-#include "tabuleiro.cpp"
 #include <iostream>
 #include <cstdlib>
 #include<ctime>
 #include<string>
 #include <vector>
 using namespace std;
+using std::string;
 
-class Partida: public Tabuleiro{
-//classe partida vai montar o tabuleiro especifico para a partida desejada
+class Tabuleiro{
+//classe tabuleiro, que vai armazenar as opçoes do jogador e construir o tabuleiro;
 private:
-    bool adversario;
-    int num_cores;
-    int tamanho_codigo;
+    vector<string> cores = {"amarelo","verde","azul","vermelho","roxo","laranja","marrom","rosa","lilas","violeta"};
+    string **matriz;
+    vector<string> *senha;
     int num_palpites;
-    bool cores_repetidas;
+    int tamanho_codigo;
+public:
+    Tabuleiro():matriz(0), senha(0){}
+    ~Tabuleiro(){
+    	for (int i = 0; i < num_palpites; ++i)
+    	{
+    		delete []matriz[i];
+    	}
 
-	void setNum_cores(int const n_cores) {
-		num_cores = n_cores;
-	}
-	void setTamanho_codigo(int const t_codigo) {
+    	delete []matriz;
+    	delete []senha;
+    }
+    void setSenha(vector<string> inSenha){
+        senha = inSenha;
+    }
+    string getCor(int posicao){
+        return cores[posicao];
+    }
+	vector<string>* getSenha() const{
+        return senha;
+    }
+    void setMatriz(){}
+    string **getMatriz(){
+    	return matriz;
+    }
+
+    virtual void imprime_tabuleiro()
+    {
+    	cout<<" ";
+    }
+
+    void cria_tabuleiro()
+    {
+    	if (num_palpites == 0 && tamanho_codigo == 0)
+    	{ return; }
+    	
+    	else{
+
+    		matriz= new string*[num_palpites];
+    		senha = new vector<string> [tamanho_codigo];
+
+       		for (int i = 0; i < num_palpites; ++i){
+            	matriz[i] = new string[2*tamanho_codigo];
+        	}
+
+        	return;
+        }
+    }
+
+    void setTamanho_codigo(int const t_codigo) {
 		tamanho_codigo = t_codigo;
 	}
 	void setNum_palpites(int const n_palpites) {
 		num_palpites = n_palpites;
 	}
+
+	virtual void imprime_Tabuleiro(){
+		cout<<" ";
+	}
+};
+
+class Partida : public Tabuleiro{
+//classe partida vai montar o tabuleiro especifico para a partida desejada
+private:
+    bool adversario;
+    int num_cores;
+    //int tamanho_codigo;
+    //int num_palpites;
+    bool cores_repetidas;
+
+	void setNum_cores(int const n_cores) {
+		num_cores = n_cores;
+	}
+/*	void setTamanho_codigo(int const t_codigo) {
+		tamanho_codigo = t_codigo;
+	}
+	void setNum_palpites(int const n_palpites) {
+		num_palpites = n_palpites;
+	}*/
 	void setCores_repetidas(bool const cores_r) {
 		cores_repetidas = cores_r;
 	}
@@ -39,9 +105,9 @@ private:
 	int getNum_cores() const {
 		return num_cores;
 	}
-	int getTamanho_codigo() const{
+	/*int getTamanho_codigo() const{
 		return tamanho_codigo;
-	}
+	}*/
 	bool getCores_repetidas() const{
 		return cores_repetidas;
 	}
@@ -166,7 +232,7 @@ public:
 		getAdversario() ? setSenhaManual() : setSenhaAleatoria();
     }
 
-    /*virtual void imprime_Tabuleiro() override
+    virtual void imprime_Tabuleiro() override
    { 
 
    		string **matriz = getMatriz();
@@ -174,7 +240,7 @@ public:
         {
            for (int j = 0; j < tamanho_codigo; ++j)
            {    
-                cout<< "| "<< matriz[i][j]l;
+                cout<< "| "<< matriz[i][j];
            }
 
             cout << "| \n";
@@ -186,7 +252,25 @@ public:
             cout<< "\n";
         }
 
-    }*/
+    }
 
 };
 
+
+int main()
+{
+	int inicializa;
+	cout<<"Deseja inicializar uma partida? (Sim - Qualquer numero, Não - 0)";
+	cin>>inicializa;
+	cout<<"\n";
+
+	Tabuleiro *T[1];
+
+	while(inicializa != 0){
+		T[0] = new Partida;
+	}
+	
+
+	return 0;
+
+}
