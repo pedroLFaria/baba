@@ -4,6 +4,8 @@
 #include<ctime>
 #include<string>
 #include <vector>
+#include <iterator>
+#include <algorithm>
 using namespace std;
 using std::string;
 
@@ -17,7 +19,7 @@ private:
     int num_palpites;
 
 public:
-    Tabuleiro():matriz(0) /*senha(0)*/{}
+    Tabuleiro():matriz(0){}
     ~Tabuleiro(){
     	for (int i = 0; i < num_palpites; ++i)
     	{
@@ -25,7 +27,6 @@ public:
     	}
 
     	delete []matriz;
-    	//delete []senha;
     }
     void setSenha(vector<string> inSenha){
         senha = inSenha;
@@ -67,11 +68,12 @@ public:
     	else{
 
     		matriz= new string*[getNum_palpites() ];
-    		//senha = new vector<string> [tamanho_codigo];
 
        		for (int i = 0; i < getNum_palpites() ; ++i){
             	matriz[i] = new string[2*getTamanho_codigo() ];
         	}
+            vector<string> senha(getNum_palpites());
+            
 
         	return;
         }
@@ -108,7 +110,7 @@ private:
 	bool getCores_repetidas() const{
 		return cores_repetidas;
 	}
-    
+
 	void escolheDificuldade(int *dificuldade) {
 		while (*dificuldade < 0 || *dificuldade > 10) {
 			cout << "Escolha uma dificuldade entre 1 e 10 ou 0 para montar o seu tabuleiro:\n";
@@ -206,7 +208,8 @@ private:
 	vector<string> retornaCoresNaoRepetida(){
 		vector<string> cores;
 		for (int i = 0, randomNumber = rand() % 10; i < getNum_cores(); i++) {
-			while(find(cores.begin(), cores.end(), getCor(randomNumber)) == cores.end()){
+                vector< string>::iterator j= find(cores.begin(), cores.end(), getCor(randomNumber));
+			while(j == cores.end()){
 				randomNumber = rand() % getNum_cores();
 			}
 			cores.push_back(getCor(randomNumber));
@@ -215,11 +218,17 @@ private:
 	}
 	void setSenhaManual(){
 		vector<string> cores;
+        string cor;
 		cout << "Escolha a ordem das cores\namarelo, verde, azul, vermelho, roxo, laranja, marrom, rosa, lilas, violeta\n";
 		for(int i = 0; i < getTamanho_codigo(); i++){
-			cin >> cores[cores.back()];
+			cin >> cor;
+            cores.push_back(cor);
+
+            //cores[cores.end()];
 			cout << "Proximo:\n";
 		}
+        setSenha(cores);
+
 	}
 public:
     Partida(){

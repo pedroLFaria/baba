@@ -166,7 +166,7 @@ public:
 		getAdversario() ? setSenhaManual() : setSenhaAleatoria();
     }
 
-    /*virtual void imprime_Tabuleiro() override
+    virtual void imprime_Tabuleiro() override
    { 
 
    		string **matriz = getMatriz();
@@ -186,7 +186,7 @@ public:
             cout<< "\n";
         }
 
-    }*/
+    }
 
 };
 
