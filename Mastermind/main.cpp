@@ -29,6 +29,7 @@ public:
     	delete []matriz;
     }
     void setSenha(vector<string> inSenha){
+        cout<<"chegou set senha";
         senha = inSenha;
     }
     void setTamanho_codigo(int const t_codigo) {
@@ -62,17 +63,17 @@ public:
 
     void cria_tabuleiro()
     {
-    	if (getNum_palpites() == 0 && getTamanho_codigo() == 0)
+    	if (num_palpites == 0 && tamanho_codigo == 0)
     	{ return; }
     	
     	else{
 
-    		matriz= new string*[getNum_palpites() ];
+    		matriz= new string*[num_palpites];
 
-       		for (int i = 0; i < getNum_palpites() ; ++i){
-            	matriz[i] = new string[2*getTamanho_codigo() ];
+       		for (int i = 0; i < num_palpites ; ++i){
+            	matriz[i] = new string[2*tamanho_codigo ];
         	}
-            vector<string> senha(getNum_palpites());
+            //vector<string> senha(num_palpites);
             
 
         	return;
@@ -82,6 +83,11 @@ public:
 	virtual void imprime_Tabuleiro(){
 		cout<<" ";
 	}
+
+    virtual void imprime_senha(){
+       // outputVector( senha );
+        cout<< " ";
+    }
 };
 
 class Partida : public Tabuleiro{
@@ -191,6 +197,7 @@ private:
 		bool jogador;
 		cout << "Digite 0 Para jogar contra a CPU ou 1 para jogar contra outro player:";
 		cin >> jogador;
+        cout<< "chegou escolha adveer";
 		return jogador;
 	}
 	void setSenhaAleatoria() {
@@ -220,13 +227,14 @@ private:
 		vector<string> cores;
         string cor;
 		cout << "Escolha a ordem das cores\namarelo, verde, azul, vermelho, roxo, laranja, marrom, rosa, lilas, violeta\n";
-		for(int i = 0; i < getTamanho_codigo(); i++){
+		for(int i = 0; i < getTamanho_codigo(); ++i){
 			cin >> cor;
             cores.push_back(cor);
 
             //cores[cores.end()];
 			cout << "Proximo:\n";
 		}
+        //cout<<"chegou sim set senha manual\n";
         setSenha(cores);
 
 	}
@@ -236,6 +244,7 @@ public:
 		escolheDificuldade(&dificuldade);
     	setaAtributosPelaDificuldade(dificuldade);
 		setAdversario(escolheAdversario());
+        cout<< "chegou";
 		getAdversario() ? setSenhaManual() : setSenhaAleatoria();
     }
 
@@ -262,13 +271,23 @@ public:
 
     }
 
+    virtual void imprime_senha() override{
+        vector<string> senha;
+        senha = getSenha();
+
+        for (int i = 0; i < getNum_palpites(); ++i)
+        {
+            cout<<senha[i];
+        }
+    }
+
 };
 
 
 int main()
 {
 	int inicializa;
-	cout<<"Deseja inicializar uma partida? (Sim - Qualquer numero, Não - 0)";
+	cout<<"Deseja inicializar uma partida? (Sim - Qualquer numero, Não - 0): ";
 	cin>>inicializa;
 	cout<<"\n";
 
@@ -276,6 +295,12 @@ int main()
 
 	while(inicializa != 0){
 		T[0] = new Partida;
+
+        //////teste atributos////
+
+        T[0]->imprime_senha();
+        
+
 	}
 	
 
