@@ -13,5 +13,5 @@ int main(){
         Partida novoJogo;
         novoJogo.jogar();
     }
-	return 0;
 }
+
