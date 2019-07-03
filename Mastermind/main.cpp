@@ -224,18 +224,20 @@ private:
 		return cores;
 	}
 	void setSenhaManual(){
-		vector<string> cores;
+		vector<string> v_cores;
         string cor;
 		cout << "Escolha a ordem das cores\namarelo, verde, azul, vermelho, roxo, laranja, marrom, rosa, lilas, violeta\n";
-		for(int i = 0; i < getTamanho_codigo(); ++i){
+		for(int i = 0; i < getTamanho_codigo(); i++){
 			cin >> cor;
-            cores.push_back(cor);
+            v_cores.push_back(cor);
 
             //cores[cores.end()];
-			cout << "Proximo:\n";
+			cout << "Proximo:\n"<< v_cores.size();
+
+            printVector(v_cores);
 		}
         //cout<<"chegou sim set senha manual\n";
-        setSenha(cores);
+        //setSenha(v_cores);
 
 	}
 public:
