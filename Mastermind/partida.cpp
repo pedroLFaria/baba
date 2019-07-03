@@ -212,22 +212,25 @@ public:
         for(int i=0; i< getNum_cores(); i++)
         for(int i=0; i< getNum_Palpites() && !getVitoria(); i++){
             realizaJogada();
-            desejaImprimirTabuleiro();
+            imprime_Tabuleiro();
         }
     }
-    void desejaImprimirTabuleiro(){
+    void imprime_Tabuleiro(){
         bool imprime;
         cout<<"Deseja imprimir o tabuleiro?(0 & 1)\n";
         cin>>imprime;
-        if(imprime)imprime_Tabuleiro();
-    }
-    void imprimeRespostaUltimaJogada(){
-        cout<<"||";
-        for(int i=getTamanho_codigo(); i < getTamanho_codigo()*2; i++){
-            cout<<getMatriz()[getNumJogada()-1][i]<<"||";
+        if(imprime){
+            for (int i = 0; i < getMatriz().size(); ++i){
+            for (int j = 0; j < getMatriz()[0].size(); ++j){
+                cout<< "||"<< getMatriz()[i][j];
+            }
+            cout << "||"<<endl;
+            for (int k = 0; k < getMatriz()[0].size(); ++k){
+                cout<< "-----";
+            }
+            cout<< "\n"<<endl;
         }
-        cout<<'\n';
+        }
     }
-
 };
 

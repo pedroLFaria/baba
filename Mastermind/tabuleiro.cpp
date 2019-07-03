@@ -14,7 +14,7 @@ private:
     bool vitoria = false;
 public:
     ~Tabuleiro(){}
-     string getCor(int posicao){
+    string getCor(int posicao){
         return cores[posicao];
     }
     void setSenha(vector<string> inSenha){
@@ -32,11 +32,11 @@ public:
     virtual void imprime_Tabuleiro() {
         for (int i = 0; i < getMatriz().size(); ++i){
             for (int j = 0; j < getMatriz()[0].size(); ++j){
-                cout<< "| "<< getMatriz()[i][j];
+                cout<< "||"<< getMatriz()[i][j];
             }
-            cout << "| \n"<<endl;
+            cout << "||"<<endl;
             for (int k = 0; k < getMatriz()[0].size(); ++k){
-                cout<< "--";
+                cout<< "-----";
             }
             cout<< "\n"<<endl;
         }
