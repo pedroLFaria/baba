@@ -14,6 +14,9 @@ private:
     bool vitoria = false;
 public:
     ~Tabuleiro(){}
+    vector<string> getCores(){
+        return cores;
+    }
     string getCor(int posicao){
         return cores[posicao];
     }
@@ -67,5 +70,9 @@ public:
     }
 	vector<vector<string>> getMatriz()const{
 		return matriz;
+    }
+
+    virtual bool validaCor(string cor){
+        return (find(getCores().begin(), getCores().end(), cor) != getCores().end());
     }
 };

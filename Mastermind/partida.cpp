@@ -172,6 +172,10 @@ private:
 		cout << "Escolha a ordem das cores\namarelo, verde, azul, vermelho, roxo, laranja, marrom, rosa, lilas, violeta\n";
 		for(int i = 0; i < getTamanho_codigo(); i++){
 			cin >> cor;
+			while(!validaCor(cor)){
+                cout<<"cor:";
+                cin>>cor;
+            }
 			cout << "Proximo:\n";
 			cores.push_back(cor);
 		}
@@ -184,6 +188,10 @@ private:
         for(int i=0; i<getTamanho_codigo(); i++){
             cout<<"cor:";
             cin>>cor;
+            while(!validaCor(cor)){
+                cout<<"cor:";
+                cin>>cor;
+            }
             jogada.push_back(cor);
         }
         adicionaJogadaNaMatriz(jogada);
@@ -197,7 +205,16 @@ private:
 		}
 		cout<<'\n';
     }
+    bool validaCor(string cor){
 
+        vector<string> inCores = getCores();
+        if(find(inCores.begin(), inCores.end(), cor) != inCores.end()){
+              return true;
+        }else{
+            cout<<"Cor invalida, inserir uma cor valida:\n[amarelo, verde, azul, vermelho, roxo, laranja, marrom, rosa, lilas, violeta]\n";
+            return false;
+          }
+    }
 public:
     Partida(){
         int dificuldade = -1;
