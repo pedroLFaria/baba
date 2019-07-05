@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "partida.cpp"
+#include "Partida.h"
 using std::string;
 
 int main(){
